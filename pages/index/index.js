@@ -1,54 +1,162 @@
-//index.js
-//获取应用实例
+
 const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    text: '123456',
+    list: [
+      {
+        id: '12345678',
+        is_zan: 0,
+        zan_num: 123,
+      },
+      {
+        id: '09876545678',
+        is_zan: 1,
+        zan_num: 3456,
+      },
+      {
+        id: '345676543',
+        is_zan: 0,
+        zan_num: 679,
+      },
+    ],
+    person: {
+      age: 18
+    },
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+  dianzan(e) {
+    const { id } = e.target.dataset
+    console.log(id)
+    // wx.request
+    this.data.list.forEach((item, index) => {
+      if (item.id === id) {
+        if (!item.is_zan) {
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            [`list[${index}].zan_num`]: item.zan_num + 1,
+            [`list[${index}].is_zan`]: 1,
+          })
+
+          wx.showToast({
+            title: '点赞成功',
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          this.setData({
+            [`list[${index}].zan_num`]: item.zan_num - 1,
+            [`list[${index}].is_zan`]: 0,
+          })
+
+          wx.showToast({
+            title: '取消赞',
+            icon: 'success',
+            duration: 2000
           })
         }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+
+
+        console.log(index)
+        console.log(item)
+      }
     })
+  },
+  plus(e, r) {
+    const { index } = e.target.dataset
+    // console.log(this.data)
+    // console.log(this.data.list[index])
+    // this.data.list[index] = this.data.list[index] + 1
+    // const item = `list[${index}]`
+    // console.log(r)
+
+
+
+    /*this.setData({
+      [item]: this.data.list[index] + 1
+    })*/
+
+    /*this.setData({
+      // 'list[0]': 123
+      [`list[${index}]`]: '123',
+      // [`list[${index}]`]: '123',
+      'person.age': 40,
+      text: 'asdfghjklsdfghjkzxcvbnmsdfghj'
+    })
+    console.log(this.data.list)
+    console.log(this.data.person)
+    console.log(this.data.text)*/
+  },
+  onShow() {
+
+  },
+  linkTo() {
+    wx.navigateTo({
+      url: '/pages/logs/logs'
+    })
+  },
+  chooseImage(e) {
+
+    wx.scanCode({
+      success (res) {
+        console.log(res)
+      }
+    })
+
+    /*wx.chooseLocation({
+      success(res) {
+        console.log(res)
+      }
+    })*/
+
+    /*wx.showActionSheet({
+      itemList: ['相机', '相册', '取消'],
+      success (res) {
+        switch (res.tapIndex) {
+          case 0:
+            wx.chooseImage({
+              count: 1,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['camera'],
+              success (res) {
+                console.log(res)
+                // tempFilePath可以作为img标签的src属性显示图片
+                const tempFilePaths = res.tempFilePaths
+              }
+            })
+            break
+          case 1:
+            wx.chooseImage({
+              count: 1,
+              sizeType: ['original', 'compressed'],
+              sourceType: ['album'],
+              success (res) {
+                console.log(res)
+                // tempFilePath可以作为img标签的src属性显示图片
+                const tempFilePaths = res.tempFilePaths
+              }
+            })
+            break
+          case 2:
+            break
+        }
+
+        console.log(res.tapIndex)
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }
+    })*/
+
+
+    /*wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        console.log(res)
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+      }
+    })*/
   }
 })

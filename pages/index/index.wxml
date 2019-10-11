@@ -1,13 +1,25 @@
-<!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="header">
+    <text bindtap="linkTo" class="back">发现</text>
+    <text>车友圈</text>
+    <image bindtap="chooseImage" class="camera" src="/assets/images/friendcircle-camera.svg"/>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+
+  <view style="margin-bottom: 20rpx"
+        wx:for="{{ list }}"
+        wx:key="*">
+    <text data-id="{{ item.id }}" bindtap="dianzan">是否点赞：{{item.is_zan ? '是' : '否'}}</text>
+    <view>点赞数：{{ item.zan_num }}</view>
   </view>
+
+
+  <!--<view bindtap="plus"
+        wx:for="{{ list }}"
+        wx:key="index"
+        data-zan="0"
+        data-index="{{ index }}"
+  >{{ item }}</view>-->
+
+  <!--<navigator url="/pages/logs/logs">logs</navigator>-->
 </view>
