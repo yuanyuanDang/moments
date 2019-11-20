@@ -1,0 +1,5 @@
+<view class="inner">
+  {{ innerText }}
+  <view>{{text}}</view>
+</view>
+<slot></slot>

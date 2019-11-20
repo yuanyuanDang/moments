@@ -1,0 +1,61 @@
+<view>
+
+  <picker
+    mode="selector"
+    range="{{ [1, 2, 3, 4, 5] }}"
+    bindchange="selector"
+  >
+    普通选择器
+  </picker>
+
+  <picker
+    mode="multiSelector"
+    range="{{ [['无脊柱动物', '脊柱动物'], ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'], ['猪肉绦虫', '吸血虫']] }}"
+    bindchange="selector"
+  >
+    多列选择器
+  </picker>
+
+  <picker
+    value="10:11"
+    mode="time"
+    bindchange="selector"
+  >
+    时间选择器
+  </picker>
+
+
+  <picker
+    value="2008-8-8"
+    mode="date"
+    bindchange="selector"
+  >
+    时间选择器
+  </picker>
+
+  <picker
+    mode="region"
+    bindchange="selector"
+  >
+    时间选择器
+  </picker>
+
+  <button open-type="contact">打开客服会话</button>
+  <button open-type="share">share</button>
+  <button open-type="openSetting">openSetting</button>
+  <button
+    open-type="getPhoneNumber"
+    bindgetphonenumber="getphonenumber"
+  >getPhoneNumber</button>
+
+  <view wx:if="{{ userInfo }}">
+    <image src="{{ userInfo.avatarUrl }}"></image>
+    <view>{{ userInfo.nickName }}</view>
+  </view>
+  <view wx:else>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">getUserInfo</button>
+  </view>
+
+  <navigator url="./index">to index</navigator>
+
+</view>

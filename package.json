@@ -1,0 +1,23 @@
+{
+  "name": "moments",
+  "version": "1.0.0",
+  "description": "> 这是一个小程序项目",
+  "main": "app.js",
+  "dependencies": {
+    "vant-weapp": "^1.0.0-beta.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanyuanDang/moments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuanyuanDang/moments/issues"
+  },
+  "homepage": "https://github.com/yuanyuanDang/moments#readme"
+}

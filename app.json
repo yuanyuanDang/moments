@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/landing/index",
+    "pages/landing",
+    "views/landing",
+    "views/index",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -8,8 +12,12 @@
     "navigationBarBackgroundColor": "#3a3c3f",
     "navigationBarTitleText": "车友圈",
     "navigationBarTextStyle": "white",
-    "navigationStyle": "custom",
     "enablePullDownRefresh": true
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

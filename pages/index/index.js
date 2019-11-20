@@ -1,8 +1,11 @@
 
 const app = getApp()
 
+import qrcode from '../../utils/weapp.qrcode.esm'
+
 Page({
   data: {
+    qrcodeVal: '',
     text: '123456',
     list: [
       {
@@ -24,6 +27,53 @@ Page({
     person: {
       age: 18
     },
+  },
+  onInput(e) {
+    // e.detail.value
+    this.setData({
+      qrcodeVal: e.detail.value
+    })
+  },
+  createQrcode() {
+    const val = this.data.qrcodeVal
+    qrcode({
+      width: 200,
+      height: 200,
+      canvasId: 'myQrcode',
+      text: val,
+      image: {
+        imageResource: '/assets/images/state-thumbs-up.svg',
+        dx: 70,
+        dy: 70,
+        dWidth: 60,
+        dHeight: 60
+      }
+    })
+  },
+  createImg() {
+    wx.canvasToTempFilePath({
+      x: 100,
+      y: 200,
+      width: 200,
+      height: 200,
+      destWidth: 200,
+      destHeight: 200,
+      canvasId: 'myQrcode',
+      success(res) {
+        /*wx.previewImage({
+          current: res.tempFilePath, // 当前显示图片的http链接
+          urls: [res.tempFilePath] // 需要预览的图片http链接列表
+        })*/
+
+        /*wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success(res) {
+            console.log(res)
+          }
+        })*/
+        // console.log(res.tempFilePath)
+      }
+    })
   },
   dianzan(e) {
     const { id } = e.target.dataset
@@ -87,7 +137,19 @@ Page({
     console.log(this.data.text)*/
   },
   onShow() {
-
+    qrcode({
+      width: 200,
+      height: 200,
+      canvasId: 'myQrcode',
+      text: 'I love U',
+      image: {
+        imageResource: '/assets/images/state-thumbs-up.svg',
+        dx: 70,
+        dy: 70,
+        dWidth: 60,
+        dHeight: 60
+      }
+    })
   },
   linkTo() {
     wx.navigateTo({

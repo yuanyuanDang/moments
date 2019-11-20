@@ -1,0 +1,35 @@
+
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+  <button>点击生成海报</button>
+</poster>
+
+
+<import src="../components/wxParse/wxParse.wxml"/>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+
+
+<test-component inner-text="hello component"></test-component>
+
+
+<include src="../templates/copyright-template/copyright.wxml"/>
+
+<!--<text>views/index.wxml</text>-->
+
+<!--<import src="template.wxml"/>-->
+<!--<template is="msgItem" data="{{ item }}"/>-->
+<!--<template is="image" data="{{ url }}"/>-->
+
+<!--<include src="template.wxml"/>-->
+
+<!--<template is="msgItem" data="{{ item }}"/>-->
+<!--<template is="image" data="{{ url }}"/>-->
+
+<wxs src="./comm.wxs" module="foo" />
+
+<view> {{foo.foo}} </view>
+
+<!-- filter -->
+
+<view> {{foo.bar(foo.foo)}} </view>
+
+<wxs src="./tools.wxs" module="logic" />

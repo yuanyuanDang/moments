@@ -1,0 +1,12 @@
+
+<view class="container">
+  <view wx:if="{{!is_edit}}">{{ todo.content }}</view>
+  <view wx:else>
+    <input bindinput="onChange" style="border: 1px solid" type="text" value="{{ todo.content }}"/>
+  </view>
+
+  <button data-id="{{ todo.objectId }}" bindtap="editTodo">
+    {{ is_edit ? '提交' : '编辑' }}
+  </button>
+</view>
+

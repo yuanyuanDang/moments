@@ -1,0 +1,6 @@
+
+@import "/components/wxParse/wxParse.wxss";
+
+.img {
+  width: 100%;
+}

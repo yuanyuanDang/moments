@@ -1,0 +1,8 @@
+
+var comm = require('./comm.wxs')
+
+
+// console.log(comm.foo);
+// console.log(comm.bar("tools.wxs"));
+
+

@@ -1,0 +1,15 @@
+<view>template</view>
+<view><image src="{{ url }}"></image></view>
+
+<template name="msgItem">
+  <view>
+    <view> {{item.index}}: {{item.msg}} </view>
+    <view> Time: {{item.time}} </view>
+  </view>
+</template>
+
+<template name="image">
+  <view>
+    <image class="img" src="{{ url }}"/>
+  </view>
+</template>
